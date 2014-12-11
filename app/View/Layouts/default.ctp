@@ -20,6 +20,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <!DOCTYPE html>
 <html>
 <head>
+    <?php echo $this->Html->script('jquery'); ?>
+    <?php echo $this->Html->script('students.main'); ?>
 	<?php echo $this->Html->charset(); ?>
 	<title>
 		<?php echo $cakeDescription ?>:

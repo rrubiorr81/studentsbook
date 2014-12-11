@@ -6,7 +6,7 @@
  * Time: 11:12 AM
  */
 
-class Person extends AppModel
+class Student extends AppModel
 {
 
 } 
