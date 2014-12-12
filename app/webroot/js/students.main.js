@@ -1,6 +1,10 @@
 var Student = {
     urlAjaxRequestPhoneNumber: "",
     urlAjaxRequestNewStudent:"",
+    addStudentMessages:{
+        0: "",
+        1: 'Student added successfully'
+    },
     loadPhoneNumber: function(){
         var selected_student = $('#student').val();
 
@@ -29,8 +33,9 @@ var Student = {
             success: function (data)
             {
                 var parsed  = JSON.parse(data);
-                 console.dir(parsed);
-                $("#student").append('<option value=' + parsed.data.id_student + '>' + parsed.data.name + '</option>');;
+                $('#form_addstudent').addClass('hide');
+                $("#student").append('<option value=' + parsed.data.id_student + '>' + parsed.data.name + '</option>');
+                $("#op_message").html(Student.addStudentMessages[parsed.result]).fadeIn(300).delay(2000).fadeOut(300);
             }
 
         });

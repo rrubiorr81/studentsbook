@@ -15,9 +15,6 @@ class StudentsController extends AppController
 			$this->loadModel('Phone');
 			$this->Phone->create();
 			$this->Phone->save(['Phone' => ['id_student' => $this->Student->id, 'pnumber' => $formData['data']['Student']['phone_number']]]);
-			/*var_dump($formData['data']);
-			exit('as');
-			$this->Student->save();*/
 			echo(json_encode(['result' => 1, 'data' => ['id_student' => $this->Student->id, 'name' => $formData['data']['Student']['name']]]));
 			exit();
 		}

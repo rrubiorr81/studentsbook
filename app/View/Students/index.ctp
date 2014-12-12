@@ -1,5 +1,5 @@
 <?php
-echo $this->Form->select('student', $students);
+echo $this->Form->select('student', $students, array('type' => 'file'));
 //echo Router::url(array('controller' => 'students', 'action' => 'index'));
 ?>
 
@@ -24,3 +24,5 @@ echo $this->Html->css('student.css');
     Student.urlAjaxRequestPhoneNumber   = '<?=$urlAjaxRequestPhoneNumber?>';
     Student.urlAjaxRequestNewStudent    = '<?=$urlAjaxRequestNewStudent?>';
 </script>
+
+<div id="op_message"></div>
