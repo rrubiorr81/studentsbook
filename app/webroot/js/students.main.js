@@ -1,6 +1,7 @@
 var Student = {
     urlAjaxRequestPhoneNumber: "",
     urlAjaxRequestNewStudent:"",
+    urlAjaxRequestEmail:"",
     addStudentMessages:{
         0: "",
         1: 'Student added successfully'
@@ -19,6 +20,24 @@ var Student = {
                 console.dir(parsed.Phone['pnumber']);
                 console.dir(parsed);
                 $('#phone_div').html(parsed.Phone['pnumber']);
+            }
+
+        });
+    },
+    loadEmail: function(){
+        var selected_student = $('#student').val();
+
+        $.ajax({
+            type: "POST",
+
+            url: Student.urlAjaxRequestEmail + "/" + selected_student,
+            data: { student_id: selected_student },
+            success: function (data)
+            {
+                var parsed  = JSON.parse(data);
+                /*console.dir(parsed);*/
+                $('#email_div').html(parsed.Email['email']);
+
             }
 
         });
@@ -47,6 +66,7 @@ $(function() {
 
     $('#student').on('change',  function()
     {
+        Student.loadEmail();
         Student.loadPhoneNumber();
     });
 
