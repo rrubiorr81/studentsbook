@@ -2,6 +2,7 @@ var Student = {
     urlAjaxRequestPhoneNumber: "",
     urlAjaxRequestNewStudent:"",
     urlAjaxRequestEmail:"",
+    loadingMessage: "loading...",
     addStudentMessages:{
         0: "",
         1: 'Student added successfully'
@@ -55,9 +56,14 @@ var Student = {
                 $('#form_addstudent').addClass('hide');
                 $("#student").append('<option value=' + parsed.data.id_student + '>' + parsed.data.name + '</option>');
                 $("#op_message").html(Student.addStudentMessages[parsed.result]).fadeIn(300).delay(2000).fadeOut(300);
+                $form.find("input[type=text], input[type=email], textarea").val("");
             }
 
         });
+    },
+    setLoadingMessage: function(){
+        $('#email_div').html(Student.loadingMessage);
+        $('#phone_div').html(Student.loadingMessage);
     }
 };
 
@@ -66,6 +72,7 @@ $(function() {
 
     $('#student').on('change',  function()
     {
+        Student.setLoadingMessage();
         Student.loadEmail();
         Student.loadPhoneNumber();
     });

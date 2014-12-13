@@ -8,5 +8,9 @@
 
 class Student extends AppModel
 {
-
+	public $validate =  [
+		'name'          => ['rule' => 'notEmpty'],
+		'phone_number'  => [ 'rule' => 'notEmpty' ],
+		'email'         => ['rule' => 'email']
+	];
 } 
